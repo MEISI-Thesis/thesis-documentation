@@ -1,6 +1,6 @@
 CREATE TABLE User (
     uuid VARCHAR NOT NULL,
-    role_uuid VARCHAR NOT NULL,
+    address_uuid VARCHAR NOT NULL,
     email VARCHAR NOT NULL,
     phone_number VARCHAR NOT NULL,
     access_code VARCHAR NOT NULL,
@@ -11,6 +11,7 @@ CREATE TABLE User (
 
     PRIMARY KEY (uuid),
     CONSTRAINT fk_role FOREIGN KEY (role_uuid) REFERENCES Role(uuid)
+    CONSTRAINT fk_address FOREIGN KEY (address_uuid) REFERENCES Address(uuid)
 );
 
 CREATE TABLE Role (
@@ -90,6 +91,13 @@ CREATE TABLE Address (
 );
 
 CREATE TABLE Device (
+    uuid VARCHAR NOT NULL,
+    designation VARCHAR NOT NULL,
+
+    PRIMARY KEY (uuid)
+);
+
+CREATE TABLE Ownership (
     uuid VARCHAR NOT NULL,
     designation VARCHAR NOT NULL,
 
